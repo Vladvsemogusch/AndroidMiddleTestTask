@@ -54,6 +54,10 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+
+    defaultConfig {
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
 }
 
 dependencies {
@@ -80,4 +84,16 @@ dependencies {
     kapt hiltDependencies.kapt
 
     implementation retrofit.jsonConverter
+
+    testImplementation junit.lib
+
+    testImplementation kotlinXCoroutinesTest.lib
+
+    testImplementation mockk.lib
+    testImplementation mockk.agent
+
+    androidTestImplementation androidXTest.runner
+    androidTestImplementation androidXTest.rules
+    androidTestImplementation composeTest.uiTestJunit
+    debugImplementation composeTest.uiTestManifest
 }
