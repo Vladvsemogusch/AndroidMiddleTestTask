@@ -27,7 +27,7 @@ fun VendorsRoute(
     VendorsScreen(
         uiState = uiState,
         onSearchQueryChange = { viewModel.onSearchQueryChange(it) },
-        onSearchClick = { viewModel.onSearchClick() }
+        onSearchClick = viewModel::onSearchClick
     )
 }
 

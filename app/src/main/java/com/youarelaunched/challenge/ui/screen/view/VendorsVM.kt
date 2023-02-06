@@ -27,8 +27,8 @@ class VendorsVM @Inject constructor(
         viewModelScope.launch {
             uiState
                 .map { it.searchQuery }
-                .filter { it.length > 2 }
-                .debounce(500)
+                .filter { it.length >= AUTO_SEARCH_MIN_LENGTH }
+                .debounce(AUTO_SEARCH_DEBOUNCE_MS)
                 .collect {
                     onSearchClick()
                 }
@@ -54,4 +54,8 @@ class VendorsVM @Inject constructor(
         getVendors(uiState.value.searchQuery)
     }
 
+    companion object {
+        private const val AUTO_SEARCH_MIN_LENGTH = 3
+        private const val AUTO_SEARCH_DEBOUNCE_MS = 500L
+    }
 }
